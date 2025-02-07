@@ -72,7 +72,7 @@ REACT_APP_API_URL=http://localhost:5000/api
 
 ## 💚 Available Scripts
 
-- **`npm start`** - Runs the development server  
+- **`npm run dev`** - Runs the development server  
 - **`npm run build`** - Builds the project for production  
 - **`npm test`** - Runs tests (if available)  
 - **`npm run eject`** - Ejects the project configuration  
