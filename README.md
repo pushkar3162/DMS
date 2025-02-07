@@ -38,11 +38,11 @@ Ensure you have the following installed on your system:
 
 3. **Start the Development Server**
    ```sh
-   npm start
+   npm run dev
    ```
    _or_
    ```sh
-   yarn start
+   yarn run dev
    ```
 
 4. **Access the Application**
