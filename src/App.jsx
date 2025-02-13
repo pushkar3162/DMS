@@ -1,7 +1,7 @@
-import "./components/styles.css";
-import Dashboard from "./components/Dashboard";
-import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { BrowserRouter, Route, Routes } from "react-router-dom";
 import AuthForm from "./components/AuthForm";
+import "./components/styles.css";
+import Dashboard from "./Dashboard";
 export default function App() {
   return (
     <BrowserRouter>
