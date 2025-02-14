@@ -4,6 +4,7 @@ import "./components/styles.css";
 import Dashboard from "./Dashboard";
 import Navbar from "./components/Navbar";
 import RoleBasedUI from "./components/RoleBasedUI";
+import UserList from "./components/UserList";
 import { useState } from "react";
 export default function App() {
   const [users, setUsers] = useState([]);
@@ -13,7 +14,11 @@ export default function App() {
         <Route path="/dashboard" element={<Dashboard />}></Route>
         <Route path="/" element={<AuthForm />}></Route>
         <Route path="/RoleBasedUI" element={<RoleBasedUI users={users} setUsers={setUsers} />} />
+        <Route path="/user-list" element={<UserList />} />
+        
       </Routes>
+     
+
     </BrowserRouter>
   );
 }
