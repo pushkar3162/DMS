@@ -12,7 +12,8 @@ const Navbar = ({ isDark, toggleTheme }) => {
   };
 
   return (
-    <div className="flex items-center bg-red-800 w-full py-2 px-4">
+    <div className="flex items-center bg-gray-700 w-full py-2 px-4">
+
       {/* Left Section: Admin Icon & Name */}
       <div className="flex items-center">
         <img

@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react";
+import { Link } from "react-router-dom";
 
 const RoleBasedUI = () => {
   const [email, setEmail] = useState("");
@@ -55,30 +56,6 @@ const RoleBasedUI = () => {
     }
   };
 
-  const deleteUser = async (email) => {
-    setError("");
-    try {
-      const response = await fetch("http://localhost:5000/user_roles", {
-        method: "DELETE",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({ user_email: email }),
-      });
-
-      if (!response.ok) {
-        const errorData = await response.json();
-        throw new Error(errorData.error || "Failed to delete user.");
-      }
-
-      setUsers(users.filter((user) => user.email !== email));
-      setSuccess("User deleted successfully!");
-    } catch (err) {
-      console.error("Error deleting user:", err);
-      setError(err.message || "Failed to delete user. Please try again.");
-    }
-  };
-
   return (
     <div className="flex justify-center items-center min-h-screen bg-gray-200">
       <div className="w-full max-w-md bg-white p-6 rounded-lg shadow-lg">
@@ -113,35 +90,26 @@ const RoleBasedUI = () => {
 
         {error && <p className="text-red-600 text-sm">{error}</p>}
         {success && <p className="text-green-600 text-sm">{success}</p>}
+{/* Centered Add User button */}
+<div className="text-center">
+  <button
+    onClick={addUser}
+    className="inline-block bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700 transition"
+  >
+    Add User
+  </button>
+</div>
 
-        <button
-          onClick={addUser}
-          className="w-full bg-green-600 text-white py-2 rounded hover:bg-green-700 transition"
-        >
-          + Add User
-        </button>
 
-        <h3 className="text-lg font-semibold mt-4">User List</h3>
-        {users.length === 0 ? (
-          <p className="text-gray-600 text-sm">No users added yet.</p>
-        ) : (
-          <ul className="mt-3 space-y-2">
-            {users.map((user) => (
-              <li key={user.email} className="flex justify-between items-center bg-gray-100 p-2 rounded">
-                <div>
-                  <p className="font-medium">{user.email}</p>
-                  <p className="text-sm text-gray-600">{user.role} - {user.permission}</p>
-                </div>
-                <button
-                  onClick={() => deleteUser(user.email)}
-                  className="text-red-600 hover:underline"
-                >
-                  Delete
-                </button>
-              </li>
-            ))}
-          </ul>
-        )}
+        <div className="mt-4 text-center">
+          {/* Styled View User List button to match Add User button */}
+          <Link
+            to="/user-list"
+            className="inline-block bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700 transition"
+          >
+            View Users
+          </Link>
+        </div>
       </div>
     </div>
   );
